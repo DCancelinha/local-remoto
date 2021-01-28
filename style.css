@@ -1,0 +1,324 @@
+@import url('https://fonts.googleapis.com/css2?family=Skranji:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Oswald&display=swap');
+
+/*DOCUMENTO*/
+* {
+    box-sizing: border-box;
+    margin: 0px;
+    padding: 0;
+}
+html,
+body {    
+    width: 100%;
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: center;
+    align-items: center;
+    background-color: #a4a3a1;
+}
+
+/*MENÚ NAV*/
+.menu {
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-between;
+    align-items: center;
+    position: sticky;
+    top: 0px;
+    z-index: 1;
+    width: 100%;
+    height: 70px;
+    background-color: #494949;
+
+}
+/*Logo interactivo*/
+.menu > *:first-child {
+    align-self: stretch;
+    width: 90px;
+    height: 70px;
+    padding: 10px;
+    background-color: #119226;
+    background-image: url("images/logo_claro.png");
+    background-position: center;
+    background-size: 50px 50px;
+    background-origin: content-box;    
+    background-repeat: no-repeat; 
+    transition: all .3s linear;
+}
+.menu > *:first-child:hover {
+    height: 112.5px;
+    border-bottom-left-radius: 45px; 
+    border-bottom-right-radius: 45px;
+}
+/*Título*/
+.menu > a {
+    font-family: 'Skranji', cursive;
+    font-size: 3em;
+    text-transform: uppercase;
+    padding: 0.5em 0.5em 0.5em 0.5em;
+    text-align: center;
+    color: #f6f4e7;
+    text-decoration: none;
+    text-align: center;
+}
+/*Carrito*/
+.menu > #carrito {
+    align-self: stretch;
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: flex-start;
+    align-items: center;
+    width: 33%;
+    height: 100vh;
+    padding: 10px;
+    background-color: rgb(155, 35, 79);
+    position: relative;
+}
+.menu > #carrito > * {
+    transition: display 0s, opacity 0.3s linear;
+}
+/*Parte fija (imagen, notificación, título, "botón" eliminar-todo, hr y el total)*/
+.menu > #carrito > img {
+    height: 50px;
+    width: 50px;
+}
+.menu > #carrito > div#notificacion {
+    display: none;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    top: 5px;
+    left: calc(50% + 15px);
+    height: 25px;
+    width: 25px;
+    margin: 0px;
+    background-color: #119226;
+    color: white;
+    font-family: 'Skranji', cursive;
+    text-transform: uppercase;
+    font-size: 1em;
+    border-radius: 50%;
+}
+.menu > #carrito > h3 {
+    font-family: 'Skranji', cursive;
+    color: white;
+    text-transform: uppercase;
+    font-size: 2em;;
+}
+.menu > #carrito > div.eliminar-todo {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    font-family: 'Oswald', sans-serif;
+    height: 2em;
+    padding: 5px 5px 5px 2em;
+    margin-bottom: 10px;
+    background-color: #f6f4e7;
+    background-image: url("images/basura.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: calc(-2em + 5px) 0;
+    background-origin: content-box;  
+    border-radius: 10px;
+    transition: background-color .3s linear;
+}
+.menu > #carrito > div.eliminar-todo:hover {
+    background-color: red;
+}
+.menu > #carrito > hr {
+    width: 100%;
+    border: none;
+    border-top: 2.5px solid white;
+}
+.menu > #carrito > div.total {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Oswald', sans-serif;
+    cursor: pointer;
+    position: fixed;
+    bottom: 0%;
+    width: 33%;
+    height: 10%;
+    font-size: 2em;
+    padding: none;
+    background-color: #119226;
+    color: #ffffff;
+    transition: background-color .3s linear;
+}
+.menu > #carrito > div.total:hover {
+    background-color: #0c6b1c;
+}
+/*Parte de pedidos*/
+.menu > #carrito > div.pedidos {
+    display: flex;
+    flex-flow: column nowrap;
+    height: auto;
+    width: 100%;
+    margin-bottom: 4em;
+    overflow: scroll;
+}
+/*No muestra la barra del overflow:scroll, pero mantiene la funcionalidad en los pedidos*/
+.menu > #carrito > div.pedidos::-webkit-scrollbar {
+    display: none;
+}
+.menu > #carrito > div.pedidos > div.pedido {
+    display: flex;
+    flex-flow: column wrap;
+    justify-content: center;
+    align-items: center;
+    margin: 5px;
+    background-color: #ffffff80;
+    border-radius: 1em;
+    position: relative;
+}
+.menu > #carrito > div.pedidos > div.pedido > img {
+    height: 75px;
+    padding: 5px;
+}
+.menu > #carrito > div.pedidos > div.pedido > h3 {
+    text-align: center;
+    font-size: 1.5rem;
+    text-transform: uppercase;
+    font-family: 'Skranji', cursive;
+}
+.menu > #carrito > div.pedidos > div.pedido > p {
+    text-align: center;
+    font-size: 1.2rem;
+    text-transform: lowercase;
+    font-family: 'Oswald', sans-serif;
+}
+.menu > #carrito > div.pedidos > div.pedido > .eliminar {
+    cursor: pointer;
+    position: absolute;
+    top: calc(0% + 5px);
+    left: calc(100% - 2em - 5px);
+    height: 2em;
+    width: 2em;
+    padding: 5px;
+    background-color: #f6f4e7;
+    background-image: url("images/basura.png");
+    background-position: top;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-origin: content-box;  
+    border-radius: 50%;
+    transition: background-color .3s linear;
+}
+.menu > #carrito > div.pedidos > div.pedido > .eliminar:hover {
+    background-color: red;
+}
+
+/*PRODUCTOS*/
+.productos {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+    align-items: center;
+    align-self: flex-start;
+    background-color: #a4a3a1;
+    width: calc(100% - 33%);
+    min-height: 100%;
+}
+
+/*TARJETA*/
+.tarjeta {
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+    background-color: #f6f4e7;
+    margin: 10px;
+    border-radius: 15px;
+    font-family: 'Skranji', cursive;
+    width: 350px;
+    height: 400px;
+}
+.tarjeta > *{
+    margin: 5px;
+    padding: 0;
+}
+/*Imagen*/
+.tarjeta img {
+    height: 150px;  
+}
+/*Nombre*/
+.tarjeta h3 {
+    font-size: 1.5em;
+    padding: 0;
+    text-transform: uppercase;
+}
+/*Precio*/
+.tarjeta p {
+    text-align: center;
+    padding: 0;
+    width: 80%;
+    font-family: 'Oswald', sans-serif;
+    font-size: 1em;
+    font-weight: 500;
+    color: darkslategrey;
+}
+/*Contador*/
+.tarjeta > div.contador {
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    margin-bottom: 0px;
+}
+.tarjeta > div.contador > .boton-mas, .tarjeta > div.contador > .boton-menos {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    width: 25px;
+    height: 25px;
+    padding: 0px;
+    border: none;
+    color: #f6f4e7;
+    background-color: #1695A6;
+    transition: none;
+}
+.tarjeta > div.contador > .boton-mas:hover, .tarjeta > div.contador > .boton-menos:hover {
+    background-color: #3a697d;
+}
+.tarjeta > div.contador > div {
+    border: none;
+    text-align: center;
+    width: 30px;
+    height: 25px;
+    padding: 0px;
+    background-color: grey;
+    transition: background-color 0.5s ease;
+}
+/*Cantidad disponible*/
+.tarjeta > .cantidad {
+    margin-top: 0px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-style: italic;
+    transition: color 0.5s ease;
+}
+/*Enlace*/
+.tarjeta a { 
+    cursor: pointer;  
+    margin: 0; 
+    border-bottom-left-radius: 15px;
+    border-bottom-right-radius: 15px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: white;
+    background-color: #1695A6;
+    font-size: 1em;
+    width: 100%;
+    text-align: center;
+    font-weight: 800;
+    text-transform: uppercase;
+    text-decoration: none;
+    padding: 5px;
+    transition: 0.3s;
+}
+.tarjeta a:hover{  
+    background-color: #3a697d; 
+}
